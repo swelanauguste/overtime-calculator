@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container p-5">
+    <div class="col-lg-4 mx-auto shadow p-5 rounded-4">
+        <p>{{object.user.profile}}</p>
+        <hr>
+        <p>{{object.get_hours}} hrs</p>
+        <p>XCD${{object.user.profile.get_hourly_rate}}/hr</p>
+        <p>{{object.get_overtime}}</p>
+        <br>
+    </div>
+</div>
+{% endblock content %}
