@@ -30,7 +30,7 @@ def create_time_sheet(request):
 
         # If you want to save the form, you can do it like this:
         time_sheet = form.save(commit=False)
-        # print(time_sheet.start_date_time)
+        time_sheet.user = request.user
         time_sheet.save()
         return redirect("/")
 
