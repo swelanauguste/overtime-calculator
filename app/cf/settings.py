@@ -1,9 +1,12 @@
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -14,9 +17,9 @@ SECRET_KEY = "django-insecure-nco@lo5^coh%tavl*ui@kecduoj-&+ece0$1r(ybu%)%uh+2p0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["overtime.kingship.info", "localhost"]
 
-# CSRF_TRUSTED_ORIGINS = ["https://anya.kingship.info"]
+CSRF_TRUSTED_ORIGINS = ["https://overtime.kingship.info"]
 
 
 # Application definition
@@ -34,6 +37,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "users",
     "timesheets",
+    "pwa",
 ]
 
 MIDDLEWARE = [
@@ -133,7 +137,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
-# EMAIL_HOST = "mail.govt.lc"
 EMAIL_HOST_USER = os.environ.get("EMAIL")
 EMAIL_HOST_PASSWORD = os.environ.get("PASS")
 EMAIL_PORT = 587
@@ -159,3 +162,39 @@ AUTH_USER_MODEL = "users.User"
 # LOGIN_REDIRECT_URL = "/"
 # LOGIN_URL = "/accounts/login/"
 # LOGOUT_URL = "/accounts/login/"
+
+
+
+PWA_APP_NAME = "kingship"
+PWA_APP_DESCRIPTION = "Overtime calculator"
+PWA_APP_THEME_COLOR = "#0A0302"
+PWA_APP_BACKGROUND_COLOR = "#ffffff"
+PWA_APP_DISPLAY = "standalone"
+PWA_APP_SCOPE = "/"
+PWA_APP_ORIENTATION = "any"
+PWA_APP_START_URL = "/"
+PWA_APP_STATUS_BAR_COLOR = "default"
+PWA_APP_ICONS = [{"src": "/static/images/my_app_icon.png", "sizes": "160x160"}]
+PWA_APP_ICONS_APPLE = [{"src": "/static/images/my_apple_icon.png", "sizes": "160x160"}]
+PWA_APP_SPLASH_SCREEN = [
+    {
+        "src": "/static/images/icons/splash-640x1136.png",
+        "media": "(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)",
+    }
+]
+PWA_APP_DIR = "ltr"
+PWA_APP_LANG = "en-US"
+PWA_APP_SHORTCUTS = [
+    {
+        "name": "Shortcut",
+        "url": "/target",
+        "description": "Shortcut to a page in my application",
+    }
+]
+PWA_APP_SCREENSHOTS = [
+    {
+        "src": "/static/images/icons/splash-750x1334.png",
+        "sizes": "750x1334",
+        "type": "image/png",
+    }
+]
